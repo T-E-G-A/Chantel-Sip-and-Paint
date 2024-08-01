@@ -56,3 +56,23 @@ loadMoreBtn.onclick = () =>{
       loadMoreBtn.style.display = 'none';
    }
 }
+
+function sendMail(event) {
+   event.preventDefault(); // prevent form submission
+   let parms = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      subject: document.getElementById("subject").value,
+      Phone: document.getElementById("number").value, 
+      message: document.getElementById("message").value,
+   }
+
+   emailjs.send("service_7mkcare", "template_z1becun", parms)
+      .then(function(response) {
+         alert("Email Sent!!!");
+         console.log("SUCCESS!", response);
+      }, function(error) {
+         alert("Email failed to send. Please try again later.");
+         console.log("FAILED...", error);
+      });
+}
